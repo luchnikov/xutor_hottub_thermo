@@ -1,0 +1,17 @@
+# calibration data for thermistor
+# taken from here:
+# http://www.backyardplus.com/proddetail.php?prod=38416
+# roughly matches experimental  
+v = np.array([[32,31e3], [43, 23e3], [52, 18e3], [59, 15e3], [64, 13e3], [75, 10e3], [84, 8e3], [97, 6e3], [105, 5e3]])
+
+# fit temperature to resistance
+p = np.polyfit(v[:,1], v[:,0], 3)
+array([ -5.45255673e-12,   3.91963869e-07,  -1.06683972e-02,
+         1.48293118e+02])
+
+# check the fit
+np.polyval(p, v[:,1])
+
+array([  31.81296614,   43.927612  ,   51.45895162,   58.05665199,
+         63.86658149,   75.35297643,   85.23991917,   97.21568195,
+        104.06865922])
